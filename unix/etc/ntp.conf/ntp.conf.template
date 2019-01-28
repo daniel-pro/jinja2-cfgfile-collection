@@ -1,0 +1,33 @@
+{% if ntp_driftfile is defined -%}
+driftfile {{ ntp_driftfile }}
+{% else %}
+driftfile /var/lib/ntp/drift
+{% endif -%}
+
+restrict default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
+
+restrict 127.0.0.1 
+restrict -6 ::1
+
+{% for server in ntp_servers -%}
+server {{ server }} {{ ntp_server_settings }}
+{% endfor -%}
+
+{% if ntp_includefile is defined -%}
+includefile {{ ntp_includefile }}
+{% else %}
+includefile /etc/ntp/crypto/pw
+{% endif -%}
+
+{% if ntp_keys is defined -%}
+keys {{ ntp_keys }}
+{% else %}
+keys /etc/ntp/keys
+{% endif -%}
+
+# Disable the monitoring facility to prevent amplification attacks using ntpdc
+# monlist command when default restrict does not include the noquery flag. See
+# CVE-2013-5211 for more details.
+# Note: Monitoring will not be disabled with the limited restriction flag.
+disable monitor

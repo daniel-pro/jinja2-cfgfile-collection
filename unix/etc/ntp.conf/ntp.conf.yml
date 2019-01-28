@@ -1,0 +1,9 @@
+--- 
+ntp_driftfile: /var/lib/ntp/drift
+ntp_includefile: /etc/ntp/crypto/pw
+ntp_keys: /etc/ntp/keys
+ntp_server_settings: iburst
+ntp_servers: 
+  - "192.168.0.10"
+  - "192.168.0.12"
+
