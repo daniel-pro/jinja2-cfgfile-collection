@@ -1,0 +1,16 @@
+--- 
+chrony_bind_addresses:
+  - ::1
+  - 127.0.0.1
+chrony_client_log: noclientlog
+chrony_config_path: /etc/chrony.conf
+chrony_driftfile_path: /var/lib/chrony/drift
+chrony_keyfile_path: /etc/chrony.keys
+chrony_max_step: makestep 10 3
+chrony_rtc: rtcsync
+chrony_server_settings: iburst
+chrony_stratum_weight: stratumweight 0
+ntp_servers: 
+  - "192.168.0.10"
+  - "192.168.0.12"
+
