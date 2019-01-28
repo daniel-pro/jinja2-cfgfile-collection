@@ -1,0 +1,10 @@
+127.0.0.1         localhost.localdomain           localhost
+::1               localhost6.localdomain6         localhost6
+#
+
+{%- if hosts_file is defined %}
+
+{% for item in hosts_file %}
+{{ item.ip }}  {{ item.hostname }}  {{ item.hostname }}.{{ item.domainname }}
+{% endfor %}
+{%- endif %}
