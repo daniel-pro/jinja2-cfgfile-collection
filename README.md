@@ -1,4 +1,4 @@
-# Jinja2 Configuration File Collection
+# Jinja2 Configuration File Template Collection
 > This repository aims to become one of the most complete Jinja2 configuration file template collection
 
 ## Installation
